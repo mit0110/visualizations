@@ -3,6 +3,8 @@ This is a collections of visualizations made while I'm learning d3.js and genera
 
 ## Ontology mapping.
 
+![Screeshot of visualization](https://cloud.githubusercontent.com/assets/5737003/19413682/62eefcf4-930a-11e6-8e10-a23d4ac99d06.png)
+
 #### Quick start
 To see the visualization, clone the repo and just open the `ontology_mapping.html` file. If you are using Chrome, you'll have an error but you can run any of the following commands
 ```
