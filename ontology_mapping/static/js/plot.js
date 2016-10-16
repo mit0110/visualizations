@@ -244,7 +244,6 @@ var selectableForceDirectedGraph = function(dashboard) {
                 return !(d.isImportant == true || d.isImportant === undefined);
             })
             .classed('yago-link', function(d) {
-                console.log(d);
                 return d.type == 'yago';
             })
             .classed('lkif-link', function(d) {
@@ -433,5 +432,3 @@ var selectableForceDirectedGraph = function(dashboard) {
         svg_graph.call(zoomer);
     }
 };
-
-console.log('lalalala');

@@ -35,7 +35,6 @@ var Dashboard = class {
         } else if (this.showLKIF) {
             return 'data/lkif_hierarchy.json';
         } else if (this.showYAGO) {
-            console.log('yago_hierarchy.json');
             return 'data/yago_hierarchy.json';
         }
         return 'data/sample_graph.json';
