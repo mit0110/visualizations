@@ -1,0 +1,103 @@
+/* Visualization styles */
+.node .main-circle {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.node .main-circle.selected {
+  stroke: #212121;
+  fill: #212121
+}
+
+.node .yago circle {
+  stroke: #E64A19;
+  fill: white;
+}
+
+.node .lkif circle {
+  fill: white;
+  stroke: #7B1FA2;
+}
+
+.node text {
+  font-family: 'Lekton', sans-serif;
+  font-size: 10px;
+  text-transform: capitalize
+}
+
+.node .yago text {
+  stroke: #E64A19;
+}
+
+.node .lkif text {
+  stroke: #7B1FA2;
+}
+
+.link {
+  stroke: #212121;
+}
+
+.link .mapping-link {
+  opacity: 1;
+  stroke: #757575;
+}
+
+.brush .extent {
+  fill-opacity: .1;
+  stroke: #fff;
+  shape-rendering: crispEdges;
+}
+
+.d3-tip {
+  width: 360px;
+  left: 50%;
+  padding: 12px;
+  background: none repeat scroll 0% 0% #757575;;
+  opacity: 0;
+  font-size: 1em;
+  line-height: 1.5;
+  padding: 1.5em;
+  color: rgb(255, 255, 255);
+  border-bottom: 10px solid #2196F3;
+  cursor: default;
+  font-family: 'Raleway', sans-serif;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.d3-tip .head-title {
+  font-size: 1.2em;
+}
+
+.d3-tip.animate {
+  animation: bounceIn 0.2s ease-out;
+  -webkit-animation: bounceIn 0.2s ease-out;
+}
+
+.d3-tip .mapping {
+  padding-top: 10px;
+}
+
+.d3-tip .mapping li {
+  text-decoration: none;
+  margin-right: 10px;
+  list-style-type: none;
+}
+
+.d3-tip .mapping ul {
+  margin-bottom: 0px;
+}
+
+/* Dashboard styles */
+.mdl-grid.dashboard-container {
+  align-items: baseline;
+}
+
+.mdl-radio__label {
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.mdl-grid.mdl-grid--no-spacing .mdl-cell.dashboard-elem-title {
+  margin-bottom: 16px;
+}

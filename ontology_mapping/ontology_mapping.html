@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+  <link rel="stylesheet" type="text/css" href="static/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css?family=Lekton" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+<body>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+  <script src="static/js/dashboard.js"></script>
+  <script src="static/js/plot.js"></script>
+
+  <div class="mdl-layout__container">
+    <div class="mdl-layout mdl-js-layout">
+      <main class="mdl-layout__content">
+        <div class="mdl-grid">
+          <div class="dashboard-container mdl-color--white mdl-shadow--2dp
+                      mdl-cell mdl-cell--3-col mdl-grid" id="dashboard">
+            <div class="mdl-grid">
+              <!-- First selector -->
+              <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+                <div class="mld-cell mdl-cell--12-col mdl-grid">
+                  <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
+                         for="switch-lkif">
+                    <input type="checkbox" id="switch-lkif"
+                           class="mdl-switch__input"
+                           onclick="dashboard.updateShowLkif(this)" checked>
+                    <span class="mdl-switch__label">Show LKIF</span>
+                  </label>
+                </div>
+                <!-- Second selector -->
+                <div class="mld-cell mdl-cell--12-col mdl-grid">
+                  <label class="mdl-switch mdl-js-switch 
+                                mdl-js-ripple-effect" for="switch-yago">
+                    <input type="checkbox" id="switch-yago"
+                           class="mdl-switch__input" 
+                           onclick="dashboard.updateShowYago(this)" checked>
+                    <span class="mdl-switch__label">Show YAGO</span>
+                  </label>
+                </div>
+                <!-- Lkif selectors -->
+                <div class="mdl-cell mdl-cell--12-col">
+                  <h4>Lkif elements</h4>
+                </div>
+                <div class="mdl-cell mdl-cell--2-col">
+                  <span>Links</span>
+                </div>
+                <div class="mdl-cell mdl-cell--10-col">
+                  <p style="width:100%">
+                    <input class="mdl-slider mdl-js-slider" type="range"
+                           min="0" max="100" value="30" tabindex="0"
+                           oninput="dashboard.updateLinks(value, 'lkif')"
+                           id="lkifLinkSlider">
+                  </p>
+                </div>
+                <div class="mdl-cell mdl-cell--2-col">
+                    <span>Nodes</span>
+                </div>
+                <div class="mdl-cell mdl-cell--10-col">
+                  <p style="width:100%">
+                    <input class="mdl-slider mdl-js-slider" type="range"
+                           min="0" max="100" value="100" tabindex="0"
+                           oninput="dashboard.updateNodes(value, 'lkif')"
+                           id="lkifNodeSlider">
+                  </p>
+                </div>
+                <div class="mdl-cell mdl-cell--12-col dashboard-elem-title">
+                    <span>Labels</span>
+                </div>
+                <div class="mdl-cell mdl-cell--12-col">
+                  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect"
+                         for="lkif-labels-1">
+                    <input type="radio" id="lkif-labels-1"
+                           class="mdl-radio__button"
+                           name="lkif-labels" value="1"
+                           onclick="dashboard.updateLabels(value, 'lkif')">
+                    <span class="mdl-radio__label">None</span>
+                  </label>
+                  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect"
+                         for="lkif-labels-2">
+                    <input type="radio" id="lkif-labels-2" 
+                           class="mdl-radio__button"
+                           name="lkif-labels" value="2"
+                           onclick="dashboard.updateLabels(value, 'lkif')">
+                    <span class="mdl-radio__label">Important</span>
+                  </label>
+                  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect"
+                         for="lkif-labels-3">
+                    <input type="radio" id="lkif-labels-3" value="3"
+                           class="mdl-radio__button" name="lkif-labels"
+                           onclick="dashboard.updateLabels(value, 'lkif')"
+                           checked>
+                    <span class="mdl-radio__label">All</span>
+                  </label>
+                </div>
+                <!-- Yago selectors -->
+                <div class="mdl-cell mdl-cell--12-col">
+                  <h4>Yago elements</h4>
+                </div>
+                <div class="mdl-cell mdl-cell--2-col">
+                  <span>Links</span>
+                </div>
+                <div class="mdl-cell mdl-cell--10-col">
+                  <p style="width:100%">
+                    <input class="mdl-slider mdl-js-slider" type="range"
+                           min="0" max="100" value="30" tabindex="0"
+                           oninput="dashboard.updateLinks(value, 'yago')"
+                           id="yagoLinkSlider">
+                  </p>
+                </div>
+                <div class="mdl-cell mdl-cell--2-col">
+                    <span>Nodes</span>
+                </div>
+                <div class="mdl-cell mdl-cell--10-col">
+                  <p style="width:100%">
+                    <input class="mdl-slider mdl-js-slider" type="range"
+                           min="0" max="100" value="100" tabindex="0"
+                           oninput="dashboard.updateNodes(value, 'yago')"
+                           id="yagoNodeSlider">
+                  </p>
+                </div>
+                <!-- Radio buttons -->
+                <div class="mdl-cell mdl-cell--12-col dashboard-elem-title">
+                    <span>Labels</span>
+                </div>
+                <div class="mdl-cell mdl-cell--12-col">
+                  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect"
+                         for="yago-labels-1">
+                    <input type="radio" id="yago-labels-1"
+                           class="mdl-radio__button"
+                           name="yago-labels" value="1"
+                           onclick="dashboard.updateLabels(value, 'yago')">
+                    <span class="mdl-radio__label">None</span>
+                  </label>
+                  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect"
+                         for="yago-labels-2">
+                    <input type="radio" id="yago-labels-2" checked 
+                           class="mdl-radio__button"
+                           name="yago-labels" value="2"
+                           onclick="dashboard.updateLabels(value, 'yago')">
+                    <span class="mdl-radio__label">Important</span>
+                  </label>
+                  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect"
+                         for="yago-labels-3">
+                    <input type="radio" id="yago-labels-3" value="3"
+                           class="mdl-radio__button" name="yago-labels"
+                           onclick="dashboard.updateLabels(value, 'yago')">
+                    <span class="mdl-radio__label">All</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-charts mdl-color--white mdl-cell mdl-cell--9-col mdl-grid">
+            <div align="center" id="d3_selectable_force_directed_graph"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  
+  <!-- Run the visualization script -->
+  <script>
+    var dashboard = new Dashboard();
+    selectableForceDirectedGraph(dashboard);
+  </script>
+</body>
