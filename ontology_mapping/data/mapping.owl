@@ -1,4 +1,6 @@
 <?xml version="1.0"?>
+  <owl:Ontology rdf:about="">
+  </owl:Ontology>
   <owl:Class rdf:ID="Hohfeldian_Power">
     <rdfs:comment>A hohfeldian power covers any action which determines a legal effect.</rdfs:comment>
 
