@@ -1,0 +1,2057 @@
+<?xml version="1.0"?>
+  <owl:Class rdf:ID="Hohfeldian_Power">
+    <rdfs:comment>A hohfeldian power covers any action which determines a legal effect.</rdfs:comment>
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Potestative_Expression"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Normatively_Qualified">
+    <rdfs:subClassOf rdf:resource="lkif-core/expression.owl#Qualified"/>
+
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Norm"/>
+        </owl:someValuesFrom>
+        <owl:onProperty rdf:resource="lkif-core/expression.owl#qualified_by"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="normatively_comparable"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#Normatively_Qualified"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment>Some thing which is qualified (allowed, disallowed) by a norm, i.e. a norm applies to the thing. Taking the principle of deontic choice to mean that the utterer of a normative statement intends to influence choices made by the addressee of the statement, the qualified thing should is comparable to some alternative. Note that Qualified does not partition into Allowed and Disallowed. Firstly, things can be Allowed by one Norm and Disallowed by another one. Secondly, the logical complement of the thing allowed by a permission is qualified (as worse or equal than the thing allowed), but neither allowed nor disallowed.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Code_of_Conduct">
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Legal_Document"/>
+    </rdfs:subClassOf>
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Soft_Law"/>
+    </rdfs:subClassOf>
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="wordnet_code_of_conduct_105668095"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>a code outlining the responsibilities of or best practice for an individual or organisation, such as a set of principles of good corporate behaviour adopted by a business\</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_code_of_conduct_105668095">
+    <rdfs:comment>a set of conventional principles and expectations that are considered binding on any person who is a member of a particular group</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_code_of_conduct_105668095">
+    <owl:equivalentClass>
+      <owl:Class rdf:ID="Code_of_Conduct"/>
+    </owl:equivalentClass>
+    <rdfs:comment>a set of conventional principles and expectations that are considered binding on any person who is a member of a particular group</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Regulation">
+
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class>
+            <owl:intersectionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#Norm"/>
+              <owl:Restriction>
+                <owl:someValuesFrom rdf:resource="lkif-core/legal-action.owl#Legislative_Body"/>
+                <owl:onProperty rdf:resource="lkif-core/expression.owl#utterer"/>
+              </owl:Restriction>
+            </owl:intersectionOf>
+          </owl:Class>
+        </owl:someValuesFrom>
+        <owl:onProperty rdf:resource="lkif-core/expression.owl#bears"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="lkif-core/expression.owl#bears"/>
+        <owl:allValuesFrom>
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="lkif-core/expression.owl#utterer"/>
+            <owl:someValuesFrom rdf:resource="lkif-core/legal-action.owl#Legislative_Body"/>
+          </owl:Restriction>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Legal_Document"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>A regulation bears one or more norms, all of which are uttered by some legislative body. It cannot bear expressions which are not uttered by a legislative body.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_legal_code_106667792">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Regulation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>a code of laws adopted by a state or nation; 'a code of laws'</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_law_106532330">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Regulation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>legal document setting forth rules governing a particular kind of activity; 'there is a law against kidnapping'</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_law_108441203">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Regulation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>the collection of rules imposed by authority; 'civilization presupposes respect for the law'; 'the great problem for jurisprudence to allow freedom while enforcing order' ATTENTION there are many spurious children, like general laws of nature or mathematics</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_legislation_106535222">
+    <owl:equivalentClass>
+      <owl:Class rdf:ID="Regulation"/>
+    </owl:equivalentClass>
+    <rdfs:comment>law enacted by a legislative body</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Soft_Law">
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Legal_Source"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>The term "soft law" refers to quasi-legal instruments which do not have any binding force, or whose binding force is somewhat "weaker" than the binding force of traditional law, often referred to as "hard law", in this context. The term "soft law" initially appeared in the area of international law, but more recently it has been transferred to other branches of law.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Strictly_Disallowed">
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Disallowed"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>Loose end.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Permissive_Right">
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Right"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>The  negation of a directed obligation is a directed permission. However, it counts as a right,  namely, a permissive right, only when such negation is aimed at benefitting the author of  the permitted action. </rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_authorization_101138670">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Permissive_Right"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>the act of conferring legality or sanction or formal warrant</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Proclamation">
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Legal_Source"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>A proclamation (Lat. proclamare, to make public by announcement) is an official declaration.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_proclamation_101266491">
+    <owl:equivalentClass>
+      <owl:Class rdf:ID="Proclamation"/>
+    </owl:equivalentClass>
+    <rdfs:comment>the formal act of proclaiming; giving public notice; 'his promulgation of the policy proved to be premature'</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Legal_Expression">
+
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="lkif-core/legal-action.owl#Public_Act"/>
+            <owl:onProperty rdf:resource="lkif-core/process.owl#created_by"/>
+          </owl:Restriction>
+        </owl:someValuesFrom>
+        <owl:onProperty rdf:resource="lkif-core/expression.owl#attitude"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment>Legal expressions are created by  some legal speech act and qualified by a communicated attitude</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="lkif-core/expression.owl#Expression"/>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Qualificatory_Expression">
+    <rdfs:subClassOf rdf:resource="#Legal_Expression"/>
+    <rdfs:comment>Ascribes a legal role to a person or an object (for example,  “x is a citizen”, “x is an intellectual work”, “x is a technical invention”);</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Enabling_Power">
+    <rdfs:comment>An enabling power is used in cases where the law aims at enabling some agent to produce an effect in a particular way.</rdfs:comment>
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Potestative_Expression"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Existential_Expression">
+    <rdfs:subClassOf rdf:resource="#Legal_Expression"/>
+    <rdfs:comment>Establishes or terminates the existence of a legal entity (for example “the company ceases to exist”);</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Persuasive_Precedent">
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Precedent"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>In law, a persuasive precedent or advisory precedent is a precedent that need not be followed under the legal principle of stare decisis, but is nevertheless followed. Sources of persuasive precedent include the obiter dicta in the judgment of a court whose judgment would otherwise be binding, and the judgments of courts in other jurisdictions where the facts and/or legal system are similar to the case at hand. If a superior court adopts a persuasive precedent, it may become binding in the jurisdiction.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Belief_In_Violation">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="lkif-core/expression.owl#Belief"/>
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#Disallowed"/>
+            </owl:someValuesFrom>
+            <owl:onProperty rdf:resource="lkif-core/expression.owl#towards"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="lkif-core/expression.owl#Belief"/>
+    <rdfs:comment>A belief in some violation</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Decree">
+    <rdfs:subClassOf rdf:resource="#Proclamation"/>
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Legal_Document"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>The word decree is often used as a derogative term for any authoritarian decision</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_decree_106539770">
+    <owl:equivalentClass>
+      <owl:Class rdf:ID="Decree"/>
+    </owl:equivalentClass>
+    <rdfs:comment>a legally binding command or decision entered on the court record (as if issued by a court or judge), but examples of members are well coincident with the LKIF definition</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Strictly_Allowed">
+    <rdfs:comment>Loose end.</rdfs:comment>
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Allowed"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Legal_Doctrine">
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Legal_Source"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>Legal doctrine is a framework, set of rules, procedural steps, or test, often established through precedent in the common law, through which judgments can be determined in a given legal case</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wikicat_Legal_doctrines_and_principles">
+    <owl:equivalentClass>
+      <owl:Class rdf:ID="Legal_Doctrine"/>
+    </owl:equivalentClass>
+    <rdfs:comment></rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_common_law_108453722">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Legal_Doctrine"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>a system of jurisprudence based on judicial precedents rather than statutory laws; 'common law originated in the unwritten laws of England and was later applied in the United States'</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_case_law_106535035">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Legal_Doctrine"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>(civil law) a law established by following earlier judicial decisions</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Resolution">
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="International_Agreement"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Soft_Law"/>
+    <rdfs:comment>A resolution is a written motion adopted by a deliberative body. The substance of the resolution can be anything that can normally be proposed as a motion.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Evaluative_Expression">
+    <rdfs:subClassOf rdf:resource="lkif-core/expression.owl#Evaluative_Proposition"/>
+    <rdfs:subClassOf rdf:resource="#Legal_Expression"/>
+    <rdfs:comment>A legal evaluative expression asserts that something is good or bad, is a value to be optimised or an evil to be minimised (for example “human dignity is value”, “participation ought to be promoted”);</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Liberty_Right">
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Right"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>When, for the benefit of a person, this person is both permitted to perform and to omit an action – that is, when the action is facultative – we can say that he or she has a liberty right with regard to that action.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_privilege_105179567">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Liberty_Right"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>(law) the right to refuse to divulge information obtained in a confidential relationship</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_prerogative_105178715">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Liberty_Right"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>a right reserved exclusively by a particular person or group (especially a hereditary or official right); 'suffrage was the prerogative of white adult males'</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_privilege_105158296">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Liberty_Right"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>a special advantage or immunity or benefit not enjoyed by all</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_liberty_113994456">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Liberty_Right"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>freedom of choice; 'liberty of opinion'; 'liberty of worship'; 'liberty--perfect liberty--to think or feel or do just as one pleases'; 'at liberty to choose whatever occupation one wishes'</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_liberty_113996061">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Liberty_Right"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>personal freedom from servitude or confinement or oppression</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_civil_liberty_113995662">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Liberty_Right"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>one's freedom to exercise one's rights as guaranteed under the laws of the country</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Declarative_Power">
+    <rdfs:comment>A declarative power covers the case when an effect is produced through the party’s declaration of it</rdfs:comment>
+    <rdfs:comment>We say that j has the declarative power to realize A to mean that if j declares A, then it is legally valid that A. For example, if x has the declarative power to terminate y’s obligation toward x to do then if x declares that y’s obligation toward x finishes, then it is legally valid that this obligation finishes.</rdfs:comment>
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Potestative_Expression"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Contract">
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Legal_Document"/>
+    </rdfs:subClassOf>
+
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="lkif-core/expression.owl#bears"/>
+        <owl:allValuesFrom>
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="lkif-core/expression.owl#utterer"/>
+            <owl:someValuesFrom>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <rdf:Description rdf:about="lkif-core/legal-action.owl#Natural_Person"/>
+                  <rdf:Description rdf:about="lkif-core/legal-action.owl#Legal_Person"/>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class>
+            <owl:intersectionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#Norm"/>
+              <owl:Restriction>
+                <owl:someValuesFrom>
+                  <owl:Class>
+                    <owl:unionOf rdf:parseType="Collection">
+                      <rdf:Description rdf:about="lkif-core/legal-action.owl#Natural_Person"/>
+                      <rdf:Description rdf:about="lkif-core/legal-action.owl#Legal_Person"/>
+                    </owl:unionOf>
+                  </owl:Class>
+                </owl:someValuesFrom>
+                <owl:onProperty rdf:resource="lkif-core/expression.owl#utterer"/>
+              </owl:Restriction>
+            </owl:intersectionOf>
+          </owl:Class>
+        </owl:someValuesFrom>
+        <owl:onProperty rdf:resource="lkif-core/expression.owl#bears"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment>A contract bears one or more norms, all of which are uttered by some natural person or legal person. It cannot bear expressions which are uttered by a different kind of agent.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_contract_106520944">
+    <owl:equivalentClass>
+      <owl:Class rdf:ID="Contract"/>
+    </rdfs:equivalentClass>
+    <rdfs:comment>a binding agreement between two or more persons that is enforceable by law</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Custom">
+    <rdfs:subClassOf rdf:resource="lkif-core/expression.owl#Medium"/>
+    <owl:disjointWith>
+      <rdf:Description rdf:about="lkif-core/expression.owl#Document">
+        <owl:disjointWith rdf:resource="#Custom"/>
+      </rdf:Description>
+    </owl:disjointWith>
+    <rdfs:comment>The collective memory of some group of agents, i.e. propositions beared by custom are shared (i.e. held) by all members of the group</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Exclusionary_Right">
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Obligative_Right"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>An exclusionary right concerns the prohibition against performing certain inferences (against reasoning in certain ways), or 
+against using certain kinds of premises for certain purposes, in the interest of a particular person. This is especially the case with anti-discrimination rules.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#International_Agreement">
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Legal_Source"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>An agreement entered into by actors in international law, namely states and international organizations. </rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Customary_Law">
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Legal_Source"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Custom"/>
+    <rdfs:comment>In law, custom, or customary law consists of established patterns of behaviour that can be objectively verified within a particular social setting.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Action_Power">
+    <rdfs:subClassOf rdf:resource="#Hohfeldian_Power"/>
+    <rdfs:comment>An action-power consists in a generic power to produce a legal effect through an action determining it. Also called Subjections</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Legal_Source">
+    <rdfs:comment>A legal source is a source for legal statements, both norms and legal expressions. In a sense it is literally a 'source' of law</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#Norm"/>
+              <owl:Class rdf:about="#Legal_Expression"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:someValuesFrom>
+        <owl:onProperty rdf:resource="lkif-core/expression.owl#bears"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="lkif-core/expression.owl#Medium"/>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Statute">
+
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class>
+            <owl:intersectionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#Norm"/>
+              <owl:Restriction>
+                <owl:someValuesFrom rdf:resource="lkif-core/legal-action.owl#Legal_Person"/>
+                <owl:onProperty rdf:resource="lkif-core/expression.owl#utterer"/>
+              </owl:Restriction>
+            </owl:intersectionOf>
+          </owl:Class>
+        </owl:someValuesFrom>
+        <owl:onProperty rdf:resource="lkif-core/expression.owl#bears"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="lkif-core/expression.owl#bears"/>
+        <owl:allValuesFrom>
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="lkif-core/expression.owl#utterer"/>
+            <owl:someValuesFrom rdf:resource="lkif-core/legal-action.owl#Legal_Person"/>
+          </owl:Restriction>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Legal_Document"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>A statute bears one or more norms, all of which are uttered by some legal person. It cannot bear expressions which are uttered by a different kind of agent.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_legislative_act_106564387">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Statute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>an act passed by a legislative body, it is a hyponym of Statute because a Statute may not necessarily be an act, but a document with norms</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="International_Arbitration">
+    <rdfs:subClassOf rdf:resource="#Soft_Law"/>
+    <rdfs:comment>International Arbitration is the established method today for resolving disputes between parties to international commercial agreements. As with arbitration generally, it is a creature of contract, i.e., the parties' decision to submit any disputes to private adjudication by one or more arbitrators appointed in accordance with rules the parties themselves have agreed to adopt, usually by including a provision for the same in their contract. The practice of international arbitration has developed so as to allow parties from different legal and cultural backgrounds to resolve their disputes, generally without the formalities of their underlying legal systems.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Immunity">
+    <rdfs:subClassOf rdf:resource="#Hohfeldian_Power"/>
+    <rdfs:comment>Also called Disabilities</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_exemption_100213903">
+    <rdfs:subClassOf rdf:ID="Immunity"/>
+    <rdfs:comment>an act exempting someone; 'he was granted immunity from prosecution', it is a hyponym because it is an act, not a power in itself</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Treaty">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Non-binding_International_Agreement"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#International_Agreement"/>
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Legal_Document"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>A treaty is a binding agreement under international law entered into by actors in international law, namely states and international organizations. Treaties are called by several names: treaties, international agreements, protocols, covenants, conventions, exchanges of letters, exchanges of notes, etc.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_treaty_106773434">
+    <owl:equivalentClass>
+      <owl:Class rdf:ID="Treaty"/>
+    </owl:equivalentClass>
+    <rdfs:comment>a written agreement between two states or sovereigns</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Mandatory_Precedent">
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Precedent"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>In law, a binding precedent (also mandatory precedent or binding authority) is a precedent which must be followed by all lower courts. It is usually created by the decision of a higher court, such as the House of Lords in the United Kingdom. Binding precedent relies on the legal principle of stare decisis.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Code">
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Legal_Document"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>A legal code bears one or more norms, all of which are uttered by some legislative body. It cannot bear expressions which are not uttered by a legislative body.</rdfs:comment>
+
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class>
+            <owl:intersectionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#Norm"/>
+              <owl:Restriction>
+                <owl:someValuesFrom rdf:resource="lkif-core/legal-action.owl#Legislative_Body"/>
+                <owl:onProperty rdf:resource="lkif-core/expression.owl#utterer"/>
+              </owl:Restriction>
+            </owl:intersectionOf>
+          </owl:Class>
+        </owl:someValuesFrom>
+        <owl:onProperty rdf:resource="lkif-core/expression.owl#bears"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="lkif-core/expression.owl#bears"/>
+        <owl:allValuesFrom>
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="lkif-core/expression.owl#utterer"/>
+            <owl:someValuesFrom rdf:resource="lkif-core/legal-action.owl#Legislative_Body"/>
+          </owl:Restriction>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Allowed">
+    <rdfs:subClassOf rdf:resource="#Normatively_Qualified"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#Normatively_Qualified"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="normatively_equivalent_or_worse"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="allowed_by"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Permission"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:comment>See normatively qualified. Alternative labels: permitted, sanctioned, let, licensed.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Observation_of_Violation">
+    <rdfs:subClassOf rdf:resource="lkif-core/expression.owl#Problem"/>
+    <rdfs:comment>An observation of a violation, i.e. of something that is Disallowed.</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="lkif-core/expression.owl#Observation"/>
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="lkif-core/role.owl#played_by"/>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#Disallowed"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Legal_Document">
+    <rdfs:comment>A legal document is a document bearing norms or normative statements. By virtue of this definition the norm-as-propositional-attitude is reified as norm-as proposition. In other words, the norm being expressed through the legal source is an expression of the propositional attitude.</rdfs:comment>
+    <rdfs:comment>Subclasses of legal source can be distinguished through the authority of the agent creating the expression (i.e. the agent holding the norm).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Legal_Source"/>
+    <rdfs:subClassOf rdf:resource="lkif-core/expression.owl#Document"/>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_legal_document_106479665">
+    <owl:equivalentClass>
+      <owl:Class rdf:resource="#Legal_Document"/>
+    </owl:equivalentClass>
+    <rdfs:comment>(law) a document that states some contractual relationship or grants some right</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_written_agreement_106771653">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Legal_Document"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>a legal document summarizing the agreement between parties</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_criminal_record_106490173">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Legal_Document"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>a list of crimes for which an accused person has been previously convicted; 'he ruled that the criminal record of the defendant could not be disclosed to the court'; 'the prostitute had a record a mile long'</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_mandate_106556481">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Legal_Document"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>The gloss is: a document giving an official instruction or command, but the examples are all missions, not only the document for the mission</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Potestative_Expression">
+    <rdfs:subClassOf rdf:resource="#Legal_Expression"/>
+    <rdfs:comment>Attributes a power to some agent (for example “a worker has the power to terminate his work contract”);</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Norm">
+    <rdfs:comment>A norm is a kind of Qualification. A qualification which normatively qualifies some thing (i.e. some normatively qualified): i.e. a qualification which allows or disallows some thing.</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#Normatively_Qualified"/>
+        <owl:onProperty rdf:resource="lkif-core/expression.owl#qualifies"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="lkif-core/expression.owl#Qualification"/>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Potestative_Right">
+    <rdfs:subClassOf rdf:resource="#Enabling_Power"/>
+    <rdfs:comment>A potestative right is an enabling power which is meant to benefit the holder of the power. For example, if some animal y does not 
+belong to anybody, then x has the potestative-right to start x’s ownership of the animal,  by capturing y.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_right_113341756">
+    <rdfs:subClassOf rdf:ID="Potestative_Right"/>
+    <rdfs:comment>(frequently plural) the interest possessed by law or custom in some intangible thing; 'mineral rights'; 'film rights'</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Allowed_And_Disallowed">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Disallowed"/>
+          <owl:Class rdf:about="#Allowed"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Disallowed"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Allowed"/>
+    <rdfs:comment>Something which is both allowed and disallowed through some norm</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Obligation">
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Permission"/>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class rdf:ID="Prohibition"/>
+    </owl:equivalentClass>
+    <rdfs:comment>See prohibition</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_obligation_106773150/">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Obligation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>a legal agreement specifying a payment or action and the penalty for failure to comply</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Disallowed_Intention">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="lkif-core/expression.owl#Intention"/>
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#Disallowed"/>
+            </owl:someValuesFrom>
+            <owl:onProperty rdf:resource="lkif-core/expression.owl#towards"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="lkif-core/expression.owl#Intention"/>
+    <rdfs:comment>The propositional content (i.e. that which is intended) of the intention is disallowed. Interesting concept for establishing mens rea (guilty mind), although 'disallowed' is a weaker qualification than criminal. Note the distinction between purposely committing a crime and knowingly committing a crime. The crime committed does not have to match the crime intended for establishing intent!</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Permission">
+    <rdfs:subClassOf rdf:resource="#Norm"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="allows"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#Allowed"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#allows"/>
+            </owl:onProperty>
+            <owl:allValuesFrom rdf:resource="#Allowed"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment>Permission allows propositions, to which therefore the predication Allowed applies. The thing(s) allowed is/are a subset of the thing(s) qualified by the permission. If S then P(A) means that S is qualified and S and A is allowed.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_permission_106689297">
+    <owl:equivalentClass>
+      <owl:Class rdf:ID="Permission"/>
+    </owl:equivalentClass>
+    <rdfs:comment>approval to do something; 'he asked permission to leave'</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Liability_Right">
+
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Right"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="wordnet_liability_114530403"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>A liability right expresses some right to act that brings with it some liability to perform another (compensating) act. For instance, if some k performs the permitted action A, then k will have to perform another action B for the benefit of j.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_liability_114530403">
+    <rdfs:comment>the state of being legally obliged and responsible</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_indebtedness_114490319">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Liability_Right"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>an obligation to pay money to another party</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Right">
+    <rdfs:subClassOf rdf:resource="#Norm"/>
+    <rdfs:comment>A right is the legal or moral entitlement to do or refrain from doing something or to obtain or refrain from obtaining an action, thing or recogition in civil society.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_right_105174653">
+    <owl:equivalentClass>
+      <owl:Class rdf:ID="Right"/>
+    </owl:equivalentClass>
+    <rdfs:comment>an abstract idea of that which is due to a person or governmental body by law or tradition or nature; 'they are endowed by their Creator with certain unalienable Rights'; 'Certain rights can never be granted to the government but must be kept in the hands of the people'- Eleanor Roosevelt; 'a right is not something that somebody gives you; it is something that nobody can take away'</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_right_104850341">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Right"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>anything in accord with principles of justice; 'he feels he is in the right'; 'the rightfulness of his claim'</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Obliged">
+    <rdfs:subClassOf rdf:resource="#Allowed"/>
+    <rdfs:comment>Is allowed by an Obligation, i.e. the alternative is strictly_worse according to the Obligation. Alternative labels: directed, commanded.</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#allowed_by"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#Obligation"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="normatively_strictly_worse"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#Disallowed"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Non-binding_International_Agreement">
+    <owl:disjointWith rdf:resource="#Treaty"/>
+    <rdfs:subClassOf rdf:resource="#International_Agreement"/>
+    <rdfs:subClassOf rdf:resource="#Soft_Law"/>
+    <rdfs:comment>Some international agreement that is not binding under international law</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Directive">
+    <rdfs:subClassOf rdf:resource="#Proclamation"/>
+    <rdfs:subClassOf rdf:resource="#Legal_Document"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="wordnet_directive_107170080"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>Examples are European Union directive, a legislative act of the European Union and Directives, used by United States Government agencies (particularly the Department of Defense) to convey policies, responsibilities, and procedures.</rdfs:comment>
+  </owl:Class>
+
+
+  <owl:Class rdf:ID="wordnet_directive_107170080">
+    <rdfs:comment>a pronouncement encouraging or banning some activity; 'the boss loves to send us directives'</rdfs:comment>
+  </owl:Class>
+
+
+
+
+  <owl:Class rdf:about="#Disallowed">
+    <rdfs:subClassOf rdf:resource="#Normatively_Qualified"/>
+    <rdfs:comment>See Qualified. Alternative labels: violation, prohibited, forbidden</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="disallowed_by"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#Prohibition"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="normatively_strictly_better"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#Allowed"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+
+  <owl:Class rdf:ID="">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID=""/>
+    </rdfs:subClassOf>
+    <rdfs:comment></rdfs:comment>
+  </owl:Class>
+
+
+  <owl:Class rdf:ID="Definitional_Expression">
+    <rdfs:subClassOf rdf:resource="#Legal_Expression"/>
+    <rdfs:comment>A definition in a legal context (for example “x means y” or “by x it is meant y”);</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Prohibition">
+    <rdfs:subClassOf rdf:resource="#Permission"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#allows"/>
+            </owl:onProperty>
+            <owl:allValuesFrom rdf:resource="#Obliged"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#allows"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#Obliged"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="disallows"/>
+            </owl:onProperty>
+            <owl:allValuesFrom rdf:resource="#Disallowed"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#disallows"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#Disallowed"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment>Prohibition obliges/allows thing(s), to which therefore the predication Obliged applies, and disallows thing(s), to which therefore the predication Disallowed applies. The union of the thing(s) allowed and the thing(s) disallowed is qualified by the prohibition. The things allowed and disallowed by the prohibition are disjoint (and completely partition the space of things qualified). If S then O(A) means that S is qualified, S and A is obliged/allowed, and S and not A is disallowed. If S then F(A) means that S is qualified, S and A is disallowed, and S and not A is obliged/allowed. The difference between Obligation and Prohibition is in which part of the partition of the qualified space is explicitly described by the normative statement. Alternative label: directive</rdfs:comment>
+    <owl:equivalentClass rdf:resource="#Obligation"/>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_interdiction_107255299">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Prohibition"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>authoritative prohibition</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_ban_107255401">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Prohibition"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>an official prohibition or edict against something</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_prohibition_106542047">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Prohibition"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Decree"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>a decree that prohibits something</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Precedent">
+    <rdfs:subClassOf rdf:resource="#Legal_Source"/>
+    <rdfs:comment>In law, a precedent or authority is a legal case establishing a principle or rule that a court may need to adopt when deciding subsequent cases with similar issues or facts. The term may also refer to the collective body of case law that a court should consider when interpreting the law. When a precedent establishes an important legal principle, or represents new or changed law on a particular issue, that precedent is often known as a landmark decision.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Obligative_Right">
+    <rdfs:subClassOf rdf:resource="#Right"/>
+    <rdfs:comment>Directed obligative ought-to-do are also called obligative rights. k has the obligative  right that j does A iff it is obligatory, toward k, that j does A. An example of obligative  right is “it is obligatory, toward Mary, that Tom pays 1,000 euro to John”</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:ObjectProperty rdf:about="#normatively_comparable">
+    <rdfs:domain rdf:resource="#Normatively_Qualified"/>
+    <rdfs:range rdf:resource="#Normatively_Qualified"/>
+    <rdfs:subPropertyOf rdf:resource="lkif-core/expression.owl#qualitatively_comparable"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="normatively_equivalent_or_better">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#normatively_equivalent_or_worse"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#Allowed"/>
+    <rdfs:subPropertyOf rdf:resource="#normatively_comparable"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#disallows">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#disallowed_by"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#Disallowed"/>
+    <rdfs:subPropertyOf rdf:resource="lkif-core/expression.owl#qualifies"/>
+    <rdfs:comment>Relates a norm to the thing it disallows</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#normatively_strictly_worse">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#normatively_equivalent_or_worse"/>
+    </rdfs:subPropertyOf>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="normatively_not_equivalent"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#Disallowed"/>
+    <rdfs:domain rdf:resource="#Obliged"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#normatively_strictly_better"/>
+    </owl:inverseOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#normatively_not_equivalent">
+    <rdfs:subPropertyOf rdf:resource="#normatively_comparable"/>
+    <owl:inverseOf rdf:resource="#normatively_not_equivalent"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#allows">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#allowed_by"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#Allowed"/>
+    <rdfs:subPropertyOf rdf:resource="lkif-core/expression.owl#qualifies"/>
+    <rdfs:comment>Relates a norm to the thing it allows</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#normatively_strictly_better">
+    <rdfs:subPropertyOf rdf:resource="#normatively_equivalent_or_better"/>
+    <rdfs:domain rdf:resource="#Disallowed"/>
+    <rdfs:range rdf:resource="#Obliged"/>
+    <owl:inverseOf rdf:resource="#normatively_strictly_worse"/>
+    <rdfs:subPropertyOf rdf:resource="#normatively_not_equivalent"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#allowed_by">
+    <owl:inverseOf rdf:resource="#allows"/>
+    <rdfs:domain rdf:resource="#Allowed"/>
+    <rdfs:subPropertyOf rdf:resource="lkif-core/expression.owl#qualified_by"/>
+    <rdfs:comment>Relates a qualified Allowed to the norm allowing it</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#disallowed_by">
+    <owl:inverseOf rdf:resource="#disallows"/>
+    <rdfs:domain rdf:resource="#Disallowed"/>
+    <rdfs:subPropertyOf rdf:resource="lkif-core/expression.owl#qualified_by"/>
+    <rdfs:comment>Relates a qualified Disallowed to the norm disallowing it</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#normatively_equivalent_or_worse">
+    <rdfs:domain rdf:resource="#Allowed"/>
+    <rdfs:subPropertyOf rdf:resource="#normatively_comparable"/>
+    <owl:inverseOf rdf:resource="#normatively_equivalent_or_better"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="commands">
+    <rdfs:range rdf:resource="#Obliged"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="commanded_by"/>
+    </owl:inverseOf>
+    <rdfs:subPropertyOf rdf:resource="#allows"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#commanded_by">
+    <owl:inverseOf rdf:resource="#commands"/>
+    <rdfs:domain rdf:resource="#Obliged"/>
+    <rdfs:subPropertyOf rdf:resource="#allowed_by"/>
+  </owl:ObjectProperty>
+  <owl:TransitiveProperty rdf:ID="strictly_equivalent">
+    <rdfs:range rdf:resource="#Allowed"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <owl:inverseOf rdf:resource="#strictly_equivalent"/>
+    <rdfs:domain rdf:resource="#Allowed"/>
+    <rdfs:subPropertyOf rdf:resource="#normatively_equivalent_or_better"/>
+    <rdfs:subPropertyOf rdf:resource="#normatively_equivalent_or_worse"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+  </owl:TransitiveProperty>
+</rdf:RDF>
+
+
+
+    <!-- http://www.estrellaproject.org/lkif-core/action.owl#Action -->
+
+    <owl:Class rdf:about="&action;Action">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&action;actor"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#plays"/>
+                        <owl:someValuesFrom rdf:resource="#Role"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.estrellaproject.org/lkif-core/action.owl#Agent -->
+
+    <owl:Class rdf:about="&action;Agent">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#plays"/>
+                <owl:allValuesFrom rdf:resource="#Role"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.estrellaproject.org/lkif-core/action.owl#Artifact -->
+
+    <owl:Class rdf:about="&action;Artifact">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#plays"/>
+                <owl:someValuesFrom rdf:resource="#Function"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.estrellaproject.org/lkif-core/action.owl#Organisation -->
+
+    <owl:Class rdf:about="&action;Organisation">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&mereology;member"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#plays"/>
+                        <owl:someValuesFrom rdf:resource="#Organisation_Role"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.estrellaproject.org/lkif-core/action.owl#Person -->
+
+    <owl:Class rdf:about="&action;Person"/>
+    
+
+
+    <!-- http://www.estrellaproject.org/lkif-core/lkif-top.owl#Mental_Entity -->
+
+    <owl:Class rdf:about="&lkif-top;Mental_Entity"/>
+    
+
+
+    <!-- http://www.estrellaproject.org/lkif-core/lkif-top.owl#Mental_Object -->
+
+    <owl:Class rdf:about="&lkif-top;Mental_Object"/>
+    
+
+
+    <!-- http://www.estrellaproject.org/lkif-core/lkif-top.owl#Physical_Entity -->
+
+    <owl:Class rdf:about="&lkif-top;Physical_Entity">
+        <owl:disjointWith rdf:resource="#Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.estrellaproject.org/lkif-core/process.owl#Mental_Process -->
+
+    <owl:Class rdf:about="&process;Mental_Process"/>
+    
+
+
+    <!-- http://www.estrellaproject.org/lkif-core/process.owl#Physical_Object -->
+
+    <owl:Class rdf:about="&process;Physical_Object"/>
+    
+
+
+    <!-- http://www.estrellaproject.org/lkif-core/process.owl#Process -->
+
+    <owl:Class rdf:about="&process;Process">
+        <owl:disjointWith rdf:resource="#Role"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.estrellaproject.org/lkif-core/role.owl#Epistemic_Role -->
+
+    <owl:Class rdf:about="#Epistemic_Role">
+        <rdfs:subClassOf rdf:resource="#Role"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#played_by"/>
+                <owl:someValuesFrom rdf:resource="&lkif-top;Mental_Object"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#context"/>
+                <owl:someValuesFrom rdf:resource="&process;Mental_Process"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#played_by"/>
+                <owl:allValuesFrom rdf:resource="&lkif-top;Mental_Object"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >The role of something used in a (mental) reasoning/inference process</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.estrellaproject.org/lkif-core/role.owl#Function -->
+
+    <owl:Class rdf:about="#Function">
+        <rdfs:subClassOf rdf:resource="#Role"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#played_by"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&process;Physical_Object"/>
+                            <owl:Class>
+                                <owl:complementOf rdf:resource="&action;Agent"/>
+                            </owl:Class>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#played_by"/>
+                <owl:someValuesFrom rdf:resource="&process;Physical_Object"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#Social_Role"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >The use or purpose of some object as used in some context.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.estrellaproject.org/lkif-core/role.owl#Organisation_Role -->
+
+    <owl:Class rdf:about="#Organisation_Role">
+        <rdfs:subClassOf rdf:resource="#Social_Role"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#played_by"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&action;Agent"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&mereology;member_of"/>
+                                <owl:someValuesFrom rdf:resource="&action;Organisation"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A role which has a meaning in the context of an organisation: i.e. the role defines a &#39;position&#39; within sthe structure of roles within an organisation</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.estrellaproject.org/lkif-core/role.owl#Person_Role -->
+
+    <owl:Class rdf:about="#Person_Role">
+        <rdfs:subClassOf rdf:resource="#Social_Role"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#played_by"/>
+                <owl:someValuesFrom rdf:resource="&action;Person"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#played_by"/>
+                <owl:allValuesFrom rdf:resource="&action;Person"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A role played by some person (i.e. not an organisation)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.estrellaproject.org/lkif-core/role.owl#Role -->
+
+    <owl:Class rdf:about="#Role">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#played_by"/>
+                <owl:someValuesFrom rdf:resource="&owl;Thing"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="#Subjective_Entity"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A role is a specification of default behavior and accompanying expectations of the thing &#39;playing&#39; the role. Similar to actors in a theater who play roles, but are not the roles. Example: student.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.estrellaproject.org/lkif-core/role.owl#Social_Role -->
+
+    <owl:Class rdf:about="#Social_Role">
+        <rdfs:subClassOf rdf:resource="#Role"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#played_by"/>
+                <owl:allValuesFrom rdf:resource="&action;Agent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#played_by"/>
+                <owl:someValuesFrom rdf:resource="&action;Agent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A social role is played by some agent in the context of social activities. The social role brings with it some expectation of &#39;default&#39; behavior of the role-filler.</rdfs:comment>
+        <rdfs:comment
+            >played_by all (action:Agent and (action:actor_in some (action:Action and (plays some expression:Expectation))))</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.estrellaproject.org/lkif-core/role.owl#Subjective_Entity -->
+
+    <owl:Class rdf:about="#Subjective_Entity">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#context"/>
+                        <owl:someValuesFrom rdf:resource="&owl;Thing"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#imposed_on"/>
+                        <owl:someValuesFrom rdf:resource="&owl;Thing"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&lkif-top;Mental_Entity"/>
+        <rdfs:comment
+            >A subjective entity is ontologically subjective, i.e. its existence is relative to an observer, that attributes its properties to some other entity, given a context.  </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+</rdf:RDF>
+
+
+  <owl:Class rdf:ID="Limited_Company">
+    <owl:equivalentClass>
+      <owl:Class rdf:ID="Unincorporated"/>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Company"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A limited company is a corporation whose liability is limited by law</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_limited_company_108185211">
+    <owl:equivalentClass>
+      <owl:Class rdf:ID="Limited_Company"/>
+    </owl:equivalentClass>
+    <rdfs:comment>a company that is organized to give its owners limited liability</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Private_Legal_Person">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A legal person as defined in private law</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Legal Person (Private Law)</rdfs:label>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Public_Body"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Legal_Person"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Society">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An organized group of people associated together for religious, benevolent, cultural, scientific, political, patriotic, or other purposes.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Private_Legal_Person"/>
+    <owl:equivalentClass>
+      <owl:Class rdf:ID="Association"/>
+    </owl:equivalentClass>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_association_108049401">
+    <owl:equivalentClass>
+      <owl:Class rdf:ID="Society"/>
+    </owl:equivalentClass>
+    <rdfs:comment>a formal organization of people or groups of people; 'he joined the Modern Language Association'</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Natural_Person">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A natural person is a human being perceptible through the senses and subject to physical laws, as opposed to an artificial person, i.e., an organization that the law treats for some purposes as if it were a person distinct from its members or owner.</rdfs:comment>
+    <owl:equivalentClass>
+      <rdf:Description rdf:about="http://www.estrellaproject.org/lkif-core/action.owl#Person">
+        <owl:equivalentClass rdf:resource="#Natural_Person"/>
+      </rdf:Description>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.estrellaproject.org/lkif-core/action.owl#Person"/>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Mandate">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Mandate: give (someone) authority to act in a certain way</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://www.estrellaproject.org/lkif-core/action.owl#Transaction"/>
+        <owl:onProperty rdf:resource="http://www.estrellaproject.org/lkif-core/mereology.owl#strict_part_of"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Public_Act"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.estrellaproject.org/lkif-core/action.owl#actor"/>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#Public_Body"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Corporation">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A corporation is a legal entity which, while being composed of natural persons, exists completely separately from them. This separation gives the corporation unique powers which other legal entities lack. </rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Unincorporated"/>
+          <owl:Class rdf:ID="Foundation"/>
+          <owl:Class rdf:ID="Incorporated"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="#Private_Legal_Person"/>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_corporation_108059412">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Corporation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>a business firm whose articles of incorporation have been approved in some state</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Legal_Person">
+    <rdfs:subClassOf rdf:resource="http://www.estrellaproject.org/lkif-core/action.owl#Organisation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A legal entity is a natural person or a legal construct through which the law allows a group of natural persons to act as if it were a single composite individual for certain purposes. The most common purposes are lawsuits, property ownership, and contracts. Sometimes referred to as corporate personhood or legal personality, this concept allows for easy conduct of business by having ownership, lawsuits, and agreements under the name of the legal entity instead of the several names of the people making up the entity.
+
+A legal entity is not necessarily distinct from the natural persons of which it is composed. Most legal entities are simply amalgamations of the persons that make it up for convenience's sake. A legal entity that does have a separate existence from its members is called a company or corporation. This distinction gives the corporation its unique perpetual succession privilege and is usually also the source of the limited liability of corporate members. Some other legal entities also enjoy limited liability of members, but not on account of separate existence (Source: Wikipedia.org)</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Legal_personality">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Legal_Person"/>
+    </rdfs:subClassOf>
+    <rdfs:comment></rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Public_Body">
+    <rdfs:subClassOf rdf:resource="#Legal_Person"/>
+    <owl:disjointWith rdf:resource="#Private_Legal_Person"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A public body or body created by an act of law to serve a public interest</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_court_108329453">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Public_Body"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>an assembly (including one or more judges) to conduct judicial business</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Foundation">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Unincorporated"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Corporation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A kind of (philanthropic) organization, set up as a legal entity either by individuals or institutions, with the purpose of distributing grants to support causes in line with the goals of the foundation</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Incorporated"/>
+    </owl:disjointWith>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_foundation_108406486">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Foundation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>an institution supported by an endowment"</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Co-operative">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An autonomous association of persons united voluntarily to meet their common economic, social, and cultural needs and aspirations through a jointly-owned and democratically-controlled enterprise.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Society"/>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_cooperative_101100877">
+    <owl:subClassOf>
+      <owl:Class rdf:ID="Co-operative"/>
+    </owl:subClassOf>
+    <rdfs:comment>a jointly owned commercial enterprise (usually organized by farmers or consumers) that produces and distributes goods and services and is run for the benefit of its owners</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Legislative_Body">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A legislature is a type of (representative) deliberative assembly with the power to adopt laws.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Legislative Body</rdfs:label>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Legislature</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Public_Body"/>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_legislature_108163273">
+    <owl:equivalentClass>
+      <owl:Class rdf:ID="Legislative_Body"/>
+    </owl:equivalentClass>
+    <rdfs:comment>persons who make or amend or repeal laws</rdfs:comment>
+  </owl:Class>
+
+
+
+
+  <owl:Class rdf:ID="Delegation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Legal_Speech_Act"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.estrellaproject.org/lkif-core/action.owl#actor"/>
+        <owl:someValuesFrom rdf:resource="#Public_Body"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Delegate: entrust a task or responsibility to some other person</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://www.estrellaproject.org/lkif-core/action.owl#Transaction"/>
+        <owl:onProperty rdf:resource="http://www.estrellaproject.org/lkif-core/mereology.owl#strict_part_of"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Public_Act"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_delegating_101140839">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Delegation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>authorizing subordinates to make certain decisions</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Legal_Speech_Act">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A legal speech act creates some propositional attitude towards a legal expression.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.estrellaproject.org/lkif-core/expression.owl#Speech_Act"/>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_pleading_106559365">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Legal_Speech_Act"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>(law) a statement in legal and logical form stating something on behalf of a party to a legal proceeding</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Public_Act">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A public act is an act by some Person or Organisation which creates (at least) a communicated attitude (and thereby an expression)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.estrellaproject.org/lkif-core/action.owl#Action"/>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Company">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A company refers to a legal entity formed which has a separate legal identity from its members, and is ordinarily incorporated to undertake commercial business. Although some jurisdictions refer to unincorporated entities as companies, in most jurisdictions the term refers only to incorporated entities. </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Private_Legal_Person"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Limited_Company"/>
+          <owl:Class rdf:ID="Public_Limited_Company"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_company_108058098">
+    <owl:equivalentClass>
+      <owl:Class rdf:ID="Company"/>
+    </owl:equivalentClass>
+    <rdfs:comment>an institution created to conduct business; 'he only invests in large well-established companies'; 'he started the company in his garage'</rdfs:comment>
+  </owl:Class>
+	
+
+
+  <owl:Class rdf:ID="Decision">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >NOTE: Cannot express that the 'promised' act corresponds to the act qualified by the statement in writing</rdfs:comment>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Decision: A (written) decision of a public body to perform a public act using a public power assigned by law.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.estrellaproject.org/lkif-core/process.owl#creation"/>
+        <owl:someValuesFrom>
+          <owl:Class>
+            <owl:intersectionOf rdf:parseType="Collection">
+              <rdf:Description rdf:about="http://www.estrellaproject.org/lkif-core/expression.owl#Promise"/>
+              <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.estrellaproject.org/lkif-core/expression.owl#towards"/>
+                <owl:someValuesFrom rdf:resource="#Public_Act"/>
+              </owl:Restriction>
+            </owl:intersectionOf>
+          </owl:Class>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.estrellaproject.org/lkif-core/action.owl#actor"/>
+        <owl:someValuesFrom rdf:resource="#Public_Body"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.estrellaproject.org/lkif-core/process.owl#creation"/>
+        <owl:someValuesFrom>
+          <owl:Class>
+            <owl:intersectionOf rdf:parseType="Collection">
+              <rdf:Description rdf:about="http://www.estrellaproject.org/lkif-core/expression.owl#Statement_In_Writing"/>
+              <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.estrellaproject.org/lkif-core/expression.owl#towards"/>
+                <owl:someValuesFrom rdf:resource="#Public_Act"/>
+              </owl:Restriction>
+            </owl:intersectionOf>
+          </owl:Class>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Legal_Speech_Act"/>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Public_Limited_Company">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Similar to the US corporation, offers several advantages over trading as sole trader.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Company"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PLC</rdfs:label>
+    <owl:equivalentClass>
+      <owl:Class rdf:about="#Incorporated"/>
+    </owl:equivalentClass>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Incorporated">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Unincorporated"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Corporation"/>
+    <owl:equivalentClass rdf:resource="#Public_Limited_Company"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An organisation formed into a legal corporation</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Foundation"/>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Act_of_Law">
+    <rdfs:subClassOf rdf:resource="#Public_Act"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.estrellaproject.org/lkif-core/action.owl#actor"/>
+        <owl:someValuesFrom rdf:resource="#Legislative_Body"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Legal_Speech_Act"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Act of law: a public act by a legislative body which creates an expression with legal status; the legal status depends on the jurisdiction of the legislative body.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Association">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A voluntary association (also sometimes called an unincorporated association, or just an association) is a group of individuals who voluntarily enter into an agreement to form a body (or organization) to accomplish a purpose.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Private_Legal_Person"/>
+    <owl:equivalentClass rdf:resource="#Society"/>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Assignment">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://www.estrellaproject.org/lkif-core/action.owl#Transaction"/>
+        <owl:onProperty rdf:resource="http://www.estrellaproject.org/lkif-core/mereology.owl#strict_part_of"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A public act that attributes a power to perform a public act to a public body.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Legal_Speech_Act"/>
+    <rdfs:subClassOf rdf:resource="#Public_Act"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.estrellaproject.org/lkif-core/action.owl#actor"/>
+        <owl:someValuesFrom rdf:resource="#Public_Body"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Unincorporated">
+    <owl:disjointWith rdf:resource="#Foundation"/>
+    <owl:disjointWith rdf:resource="#Incorporated"/>
+    <owl:equivalentClass rdf:resource="#Limited_Company"/>
+    <rdfs:subClassOf rdf:resource="#Corporation"/>
+  </owl:Class>
+</rdf:RDF>
+
+
+  <owl:Class rdf:ID="Social_Legal_Role">
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://www.estrellaproject.org/lkif-core/role.owl#Social_Role">
+        <owl:disjointWith rdf:resource="http://www.estrellaproject.org/lkif-core/role.owl#Function"/>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Legal_Role"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A social legal role is played by some agent in the context of legal activities.</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:about="#Legal_Role">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://www.estrellaproject.org/lkif-core/action.owl#Agent"/>
+        <owl:onProperty rdf:resource="http://www.estrellaproject.org/lkif-core/role.owl#played_by"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.estrellaproject.org/lkif-core/action.owl#Agent"/>
+        <owl:onProperty rdf:resource="http://www.estrellaproject.org/lkif-core/role.owl#played_by"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.estrellaproject.org/lkif-core/role.owl#Role"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A legal role is a role played in a legal context. Legal role players can be both Agents and other 'things'</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_party_110402824">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Legal_Role"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>a person involved in legal proceedings; 'the party of the first part'</rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Professional_Legal_Role">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.estrellaproject.org/lkif-core/action.owl#Person"/>
+        <owl:onProperty rdf:resource="http://www.estrellaproject.org/lkif-core/role.owl#played_by"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A professional legal role is a legal profession of some person, examples: lawyer, judge etc.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Social_Legal_Role"/>
+    <rdfs:subClassOf rdf:resource="http://www.estrellaproject.org/lkif-core/role.owl#Organisation_Role"/>
+  </owl:Class>
+</rdf:RDF>
+
+
+
+  <owl:Class rdf:ID="wordnet_judge_110225219">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Professional_Legal_Role"/>
+    </rdfs:subClassOf>
+    <rdfs:comment></rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_judiciary_108166187">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Professional_Legal_Role"/>
+    </rdfs:subClassOf>
+    <rdfs:comment></rdfs:comment>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="wordnet_lawyer_110249950">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Professional_Legal_Role"/>
+    </rdfs:subClassOf>
+    <rdfs:comment></rdfs:comment>
+  </owl:Class>
+
+
