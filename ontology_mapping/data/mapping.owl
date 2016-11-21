@@ -490,7 +490,7 @@
   <owl:Class rdf:ID="wordnet_contract_106520944">
     <owl:equivalentClass>
       <owl:Class rdf:ID="Contract"/>
-    </rdfs:equivalentClass>
+    </owl:equivalentClass>
     <rdfs:comment>a binding agreement between two or more persons that is enforceable by law</rdfs:comment>
   </owl:Class>
 
@@ -513,7 +513,7 @@
     <rdfs:subClassOf>
       <owl:Class rdf:ID="Obligative_Right"/>
     </rdfs:subClassOf>
-    <rdfs:comment>An exclusionary right concerns the prohibition against performing certain inferences (against reasoning in certain ways), or 
+    <rdfs:comment>An exclusionary right concerns the prohibition against performing certain inferences (against reasoning in certain ways), or
 against using certain kinds of premises for certain purposes, in the interest of a particular person. This is especially the case with anti-discrimination rules.</rdfs:comment>
   </owl:Class>
 
@@ -820,7 +820,7 @@ against using certain kinds of premises for certain purposes, in the interest of
 
   <owl:Class rdf:ID="Potestative_Right">
     <rdfs:subClassOf rdf:resource="#Enabling_Power"/>
-    <rdfs:comment>A potestative right is an enabling power which is meant to benefit the holder of the power. For example, if some animal y does not 
+    <rdfs:comment>A potestative right is an enabling power which is meant to benefit the holder of the power. For example, if some animal y does not
 belong to anybody, then x has the potestative-right to start x’s ownership of the animal,  by capturing y.</rdfs:comment>
   </owl:Class>
 
@@ -1056,13 +1056,6 @@ belong to anybody, then x has the potestative-right to start x’s ownership of 
   </owl:Class>
 
 
-  <owl:Class rdf:ID="">
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID=""/>
-    </rdfs:subClassOf>
-    <rdfs:comment></rdfs:comment>
-  </owl:Class>
-
 
   <owl:Class rdf:ID="Definitional_Expression">
     <rdfs:subClassOf rdf:resource="#Legal_Expression"/>
@@ -1247,7 +1240,6 @@ belong to anybody, then x has the potestative-right to start x’s ownership of 
     <rdfs:subPropertyOf rdf:resource="#normatively_equivalent_or_worse"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
   </owl:TransitiveProperty>
-</rdf:RDF>
 
 
 
@@ -1266,7 +1258,7 @@ belong to anybody, then x has the potestative-right to start x’s ownership of 
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
-    
+
 
 
     <!-- http://www.estrellaproject.org/lkif-core/action.owl#Agent -->
@@ -1280,7 +1272,7 @@ belong to anybody, then x has the potestative-right to start x’s ownership of 
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="#Role"/>
     </owl:Class>
-    
+
 
 
     <!-- http://www.estrellaproject.org/lkif-core/action.owl#Artifact -->
@@ -1293,7 +1285,7 @@ belong to anybody, then x has the potestative-right to start x’s ownership of 
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
-    
+
 
 
     <!-- http://www.estrellaproject.org/lkif-core/action.owl#Organisation -->
@@ -1311,25 +1303,25 @@ belong to anybody, then x has the potestative-right to start x’s ownership of 
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
-    
+
 
 
     <!-- http://www.estrellaproject.org/lkif-core/action.owl#Person -->
 
     <owl:Class rdf:about="&action;Person"/>
-    
+
 
 
     <!-- http://www.estrellaproject.org/lkif-core/lkif-top.owl#Mental_Entity -->
 
     <owl:Class rdf:about="&lkif-top;Mental_Entity"/>
-    
+
 
 
     <!-- http://www.estrellaproject.org/lkif-core/lkif-top.owl#Mental_Object -->
 
     <owl:Class rdf:about="&lkif-top;Mental_Object"/>
-    
+
 
 
     <!-- http://www.estrellaproject.org/lkif-core/lkif-top.owl#Physical_Entity -->
@@ -1337,19 +1329,19 @@ belong to anybody, then x has the potestative-right to start x’s ownership of 
     <owl:Class rdf:about="&lkif-top;Physical_Entity">
         <owl:disjointWith rdf:resource="#Role"/>
     </owl:Class>
-    
+
 
 
     <!-- http://www.estrellaproject.org/lkif-core/process.owl#Mental_Process -->
 
     <owl:Class rdf:about="&process;Mental_Process"/>
-    
+
 
 
     <!-- http://www.estrellaproject.org/lkif-core/process.owl#Physical_Object -->
 
     <owl:Class rdf:about="&process;Physical_Object"/>
-    
+
 
 
     <!-- http://www.estrellaproject.org/lkif-core/process.owl#Process -->
@@ -1357,7 +1349,7 @@ belong to anybody, then x has the potestative-right to start x’s ownership of 
     <owl:Class rdf:about="&process;Process">
         <owl:disjointWith rdf:resource="#Role"/>
     </owl:Class>
-    
+
 
 
     <!-- http://www.estrellaproject.org/lkif-core/role.owl#Epistemic_Role -->
@@ -1385,7 +1377,7 @@ belong to anybody, then x has the potestative-right to start x’s ownership of 
         <rdfs:comment rdf:datatype="&xsd;string"
             >The role of something used in a (mental) reasoning/inference process</rdfs:comment>
     </owl:Class>
-    
+
 
 
     <!-- http://www.estrellaproject.org/lkif-core/role.owl#Function -->
@@ -1417,7 +1409,7 @@ belong to anybody, then x has the potestative-right to start x’s ownership of 
         <rdfs:comment rdf:datatype="&xsd;string"
             >The use or purpose of some object as used in some context.</rdfs:comment>
     </owl:Class>
-    
+
 
 
     <!-- http://www.estrellaproject.org/lkif-core/role.owl#Organisation_Role -->
@@ -1443,7 +1435,7 @@ belong to anybody, then x has the potestative-right to start x’s ownership of 
         <rdfs:comment rdf:datatype="&xsd;string"
             >A role which has a meaning in the context of an organisation: i.e. the role defines a &#39;position&#39; within sthe structure of roles within an organisation</rdfs:comment>
     </owl:Class>
-    
+
 
 
     <!-- http://www.estrellaproject.org/lkif-core/role.owl#Person_Role -->
@@ -1465,7 +1457,7 @@ belong to anybody, then x has the potestative-right to start x’s ownership of 
         <rdfs:comment rdf:datatype="&xsd;string"
             >A role played by some person (i.e. not an organisation)</rdfs:comment>
     </owl:Class>
-    
+
 
 
     <!-- http://www.estrellaproject.org/lkif-core/role.owl#Role -->
@@ -1481,7 +1473,7 @@ belong to anybody, then x has the potestative-right to start x’s ownership of 
         <rdfs:comment rdf:datatype="&xsd;string"
             >A role is a specification of default behavior and accompanying expectations of the thing &#39;playing&#39; the role. Similar to actors in a theater who play roles, but are not the roles. Example: student.</rdfs:comment>
     </owl:Class>
-    
+
 
 
     <!-- http://www.estrellaproject.org/lkif-core/role.owl#Social_Role -->
@@ -1505,7 +1497,7 @@ belong to anybody, then x has the potestative-right to start x’s ownership of 
         <rdfs:comment
             >played_by all (action:Agent and (action:actor_in some (action:Action and (plays some expression:Expectation))))</rdfs:comment>
     </owl:Class>
-    
+
 
 
     <!-- http://www.estrellaproject.org/lkif-core/role.owl#Subjective_Entity -->
@@ -1529,13 +1521,12 @@ belong to anybody, then x has the potestative-right to start x’s ownership of 
         <rdfs:comment
             >A subjective entity is ontologically subjective, i.e. its existence is relative to an observer, that attributes its properties to some other entity, given a context.  </rdfs:comment>
     </owl:Class>
-    
+
 
 
     <!-- http://www.w3.org/2002/07/owl#Thing -->
 
     <owl:Class rdf:about="&owl;Thing"/>
-</rdf:RDF>
 
 
   <owl:Class rdf:ID="Limited_Company">
@@ -1838,7 +1829,7 @@ A legal entity is not necessarily distinct from the natural persons of which it 
     </owl:equivalentClass>
     <rdfs:comment>an institution created to conduct business; 'he only invests in large well-established companies'; 'he started the company in his garage'</rdfs:comment>
   </owl:Class>
-	
+
 
 
   <owl:Class rdf:ID="Decision">
@@ -1966,7 +1957,6 @@ A legal entity is not necessarily distinct from the natural persons of which it 
     <owl:equivalentClass rdf:resource="#Limited_Company"/>
     <rdfs:subClassOf rdf:resource="#Corporation"/>
   </owl:Class>
-</rdf:RDF>
 
 
   <owl:Class rdf:ID="Social_Legal_Role">
@@ -2025,7 +2015,6 @@ A legal entity is not necessarily distinct from the natural persons of which it 
     <rdfs:subClassOf rdf:resource="#Social_Legal_Role"/>
     <rdfs:subClassOf rdf:resource="http://www.estrellaproject.org/lkif-core/role.owl#Organisation_Role"/>
   </owl:Class>
-</rdf:RDF>
 
 
 

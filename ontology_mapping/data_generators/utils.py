@@ -1,11 +1,87 @@
 """Common functions and constants."""
 
+import xmltodict
+from collections import OrderedDict, defaultdict
 from SPARQLWrapper import SPARQLWrapper, JSON
 
 
 LKIF_OUTPUT_FILE = 'data/lkif_hierarchy.json'
 YAGO_OUTPUT_FILE = 'data/yago_hierarchy.json'
 OUTPUT_FILE = 'data/ontology.json'
+MAPPING_FILE = 'data/mapping.owl'
+HIERARCHY_FILE = 'data/ontology_hierarchy.json'
+
+
+EQ_CLASS_KEY = u'owl:equivalentClass'
+CLASS_KEY = u'owl:Class'
+ID_KEY = u'@rdf:ID'
+ABOUT_KEY = u'@rdf:about'
+SUBTYPE_KEY = u'rdfs:subClassOf'
+RESOURCE_KEY = u'@rdf:resource'
+
+
+def get_class_name(onto_class):
+    if not onto_class:
+        return None
+    if onto_class.get(ID_KEY):
+        return onto_class.get(ID_KEY).strip('#')
+    if onto_class.get(ABOUT_KEY):
+        return onto_class.get(ABOUT_KEY).strip('#')
+    if onto_class.get(RESOURCE_KEY):
+        return onto_class.get(RESOURCE_KEY).strip('#')
+    return None
+
+
+def add_class_to_map(onto_class, mapping):
+    parents = []
+    if isinstance(onto_class.get(EQ_CLASS_KEY), OrderedDict):
+        parents = [onto_class[EQ_CLASS_KEY].get(CLASS_KEY)]
+    elif isinstance(onto_class.get(SUBTYPE_KEY), OrderedDict):
+        if onto_class[SUBTYPE_KEY].get(CLASS_KEY):
+            parents = [onto_class[SUBTYPE_KEY].get(CLASS_KEY)]
+        else:
+            parents = [onto_class[SUBTYPE_KEY]]
+    elif isinstance(onto_class.get(SUBTYPE_KEY), list):
+        parents = [parent[CLASS_KEY] for parent in onto_class.get(SUBTYPE_KEY)]
+
+    class_name = get_class_name(onto_class)
+    for parent in parents:
+        parent_name = get_class_name(parent)
+        if parent_name:
+            mapping[parent_name].add(class_name)
+        else:
+            print 'Skipping {}: parent without name'.format(class_name)
+
+
+def is_yago_node(onto_class):
+    name = get_class_name(onto_class)
+    if not name:
+        return False
+    else:
+        return name.startswith('wordnet')
+
+
+def get_likf_to_yago_mapping():
+    """Returns a map from lkif classes to a list of yago classes."""
+    mapping = defaultdict(set)
+    with open(MAPPING_FILE, 'r') as infile:
+        text = infile.read().replace('</rdf:RDF>', '').replace('&', '')
+    doc = xmltodict.parse('<document>' + text[23:] + '</document>')
+
+    for onto_class in doc['document'][CLASS_KEY]:
+        if is_yago_node(onto_class):
+            add_class_to_map(onto_class, mapping)
+    return {key: list(value) for key, value in mapping.iteritems()}
+
+
+def get_yago_to_lkif_mapping():
+    """Returns a map from yago classes to a list of lkif classes."""
+    mapping = defaultdict(list)
+    inverse_map = get_likf_to_yago_mapping()
+    for lkif_class, yago_classes in inverse_map.iteritems():
+        for yago_class in yago_classes:
+            mapping[yago_class].append(lkif_class)
+    return mapping
 
 
 LKIF_TO_YAGO_MAPPING = {

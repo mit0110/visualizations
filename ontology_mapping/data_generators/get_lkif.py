@@ -36,6 +36,9 @@ FILES = [
 ]
 
 
+LKIF_TO_YAGO_MAPPING = utils.get_likf_to_yago_mapping()
+
+
 class ClassIndex(object):
     """Abstraction for a class index."""
     def __init__(self):
@@ -52,8 +55,8 @@ class ClassIndex(object):
             self.elements.append({
                 'name': element_name,
                 'description': element.bestDescription(),
-                'mappings': utils.LKIF_TO_YAGO_MAPPING.get(element_name, []),
-                'important': element_name in utils.LKIF_TO_YAGO_MAPPING
+                'mappings': LKIF_TO_YAGO_MAPPING.get(element_name, []),
+                'important': element_name in LKIF_TO_YAGO_MAPPING
             })
         return self.index[element_name]
 

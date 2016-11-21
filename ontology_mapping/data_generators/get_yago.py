@@ -1,4 +1,4 @@
-"""Script to get YAGO hierarchy only with nodes from LKIF_TO_YAGO_MAPPING.
+"""Script to get YAGO hierarchy only with nodes from YAGO_TO_LKIF_MAPPING.
 
 The output json is optimized for D3 visualization using a force layout. The
 format is:
@@ -12,10 +12,13 @@ format is:
 import json
 import utils
 from collections import defaultdict
+from tqdm import tqdm
 
 
 YAGO_ENPOINT_URL = 'https://linkeddata1.calcul.u-psud.fr/sparql'
 TOP_CLASS = 'owl#Thing'
+
+YAGO_TO_LKIF_MAPPING = utils.get_yago_to_lkif_mapping()
 
 
 def add_ancestors(type_name, current_ancestors, descriptions):
@@ -78,7 +81,7 @@ def write_json(pairs, nodes, descriptions, important_nodes=[]):
             'name': node,
             'important': node in important_nodes,
             'description': descriptions.get(node, ''),
-            'mappings': utils.YAGO_TO_LKIF_MAPPING.get(node, []),
+            'mappings': YAGO_TO_LKIF_MAPPING.get(node, []),
             'ontology': 'yago'
         } for node in nodes],
         'links': [{
@@ -94,11 +97,10 @@ def write_json(pairs, nodes, descriptions, important_nodes=[]):
 
 def main():
     """Main script function"""
-    yago_types = utils.LKIF_TO_YAGO_MAPPING.values()
-    yago_types = set([item for sublist in yago_types for item in sublist])
+    yago_types = set(YAGO_TO_LKIF_MAPPING.keys())
     ancestors = {}
     descriptions = {}
-    for type_name in yago_types:
+    for type_name in tqdm(yago_types):
         add_ancestors(type_name, ancestors, descriptions)
     assert set(ancestors.keys()) == set(descriptions.keys())
     pairs = [(parent, child) for parent, children in ancestors.iteritems()
