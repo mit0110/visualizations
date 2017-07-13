@@ -11,7 +11,7 @@ var nodeHeight = 150, nodeWidth = 120, collapsedWidth = 40,
 
 var rootPosition = {x: margin.left + width / 2, y: margin.top};
 
-var maxTextLenght = 400;
+var maxTextLenght = 350;
 
 var i = 0,
     duration = 750,
@@ -35,6 +35,21 @@ function getNodeText(d) {
   return d.name;
 }
 
+function createZoomFunction() {
+  return d3.behavior.zoom()
+    .center([0, 0])
+    .on("zoom", function () {
+      center = [
+        d3.event.translate[0] + width / 2 + margin.right,
+        d3.event.translate[1] + margin.top
+      ];
+      svg.attr("transform", "translate(" + center + ")" + " scale(" + d3.event.scale + ")")
+    })
+}
+
+var zoom = createZoomFunction();
+
+// Create the SVG containers
 var tree = d3.layout.tree()
     .nodeSize([nodeWidth * 1.1, nodeHeight])
     //.size([height, width]);
@@ -46,11 +61,13 @@ var diagonal = d3.svg.diagonal()
     .projection(function(d) { return [d.x, d.y]; });
 
 var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.right + margin.left)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform",
-          "translate(" + rootPosition.x + "," + rootPosition.y + ")");
+      .attr("width", width + margin.right + margin.left)
+      .attr("height", height + margin.top + margin.bottom)
+    .call(zoom)
+    .append("g")
+      .attr("transform",
+            "translate(" + rootPosition.x + "," + rootPosition.y + ")")
+
 
 var documentFile = '../data/CASE_OF__ALKASI_v._TURKEY-L.json';
 
@@ -176,9 +193,6 @@ function update(source) {
     d.x0 = d.x;
     d.y0 = d.y;
   });
-
-  console.log('lalal');
-
 }
 
 // Toggle children on click.
