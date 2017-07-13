@@ -6,12 +6,12 @@ var margin = {top: 20, right: 120, bottom: 20, left: 120},
     width = viewerWidth - margin.right - margin.left,
     height = viewerHeight - margin.top - margin.bottom;
 
-var nodeHeight = 200, nodeWidth = 160, collapsedWidth = 40,
+var nodeHeight = 150, nodeWidth = 120, collapsedWidth = 40,
     collapsedHeight = 20;
 
 var rootPosition = {x: margin.left + width / 2, y: margin.top};
 
-var maxTextLenght = 50;
+var maxTextLenght = 400;
 
 var i = 0,
     duration = 750,
@@ -52,7 +52,9 @@ var svg = d3.select("body").append("svg")
     .attr("transform",
           "translate(" + rootPosition.x + "," + rootPosition.y + ")");
 
-d3.json("sample.json", function(error, dataRoot) {
+var documentFile = '../data/CASE_OF__ALKASI_v._TURKEY-L.json';
+
+d3.json(documentFile, function(error, dataRoot) {
   if (error) throw error;
 
   root = dataRoot;
@@ -105,11 +107,9 @@ function update(source) {
       .attr("height", getNodeHeight)
       .attr('class', 'nodeText')
       .attr('x', function(d) { return -getNodeWidth(d) / 2 })
-      // .attr("transform", function(d) { return "translate(" + source.x0 + "," + source.y0 + ")"; })
     .append("xhtml:body")
     .append("xhtml:div")
       .text(getNodeText)
-      .attr('class', 'caseText')
 
   // Transition nodes to their new position.
   var nodeUpdate = node.transition()
@@ -140,8 +140,10 @@ function update(source) {
       .attr('height', getNodeHeight)
       .attr('width', getNodeWidth);
 
-  // nodeExit.select("text")
-  //     .style("fill-opacity", 1e-6);
+  // TODO make text disappear during the transition
+  // nodeExit.select("foreignObject")
+  //    .style("fill-opacity", 1e-6);
+
 
   // Update the links…
   var link = svg.selectAll("path.link")
