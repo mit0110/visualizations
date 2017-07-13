@@ -37,7 +37,7 @@ def main():
                     'destination': destination
                 }
                 digraph.add_edge(origin, destination, {'label': label})
-    data = {'name': doc_title, 'children': []}
+    data = {'name': doc_title.replace('_', ' '), 'children': []}
     for root in roots:
         descendants = nx.descendants(digraph, root)
         descendants.add(root)
