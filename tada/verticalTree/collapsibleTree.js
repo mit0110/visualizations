@@ -18,15 +18,15 @@ var i = 0,
     root;
 
 function getNodeWidth(d) {
-  return d._children ? collapsedWidth : nodeWidth;
+  return d.collapsed ? collapsedWidth : nodeWidth;
 }
 
 function getNodeHeight(d) {
-  return d._children ? collapsedHeight : nodeHeight;
+  return d.collapsed ? collapsedHeight : nodeHeight;
 }
 
 function getNodeText(d) {
-  if (d._children !== undefined && d._children !== null) {
+  if (d.collapsed) {
     return d.name;
   }
   if (d.label && d.text) {
@@ -84,8 +84,13 @@ function drawTree(documentFile) {
         d._children.forEach(collapse);
         d.children = null;
       }
+      d.collapsed = true;
     }
 
+    // Collapse everithng under the first level
+    root.children.forEach(function(d){
+      d.children.forEach(collapse);
+    });
     update(root);
   });
 
@@ -107,7 +112,9 @@ function drawTree(documentFile) {
     var nodeEnter = node.enter().append("g")
         .attr('width', nodeWidth)
         .attr("class", "node")
-        .attr("transform", function(d) { return "translate(" + source.x0 + "," + source.y0 + ")"; })
+        .attr("transform", function(d) {
+          return "translate(" + source.x0 + "," + source.y0 + ")";
+        })
         .on("click", click);
 
     nodeEnter.append("rect")
@@ -116,21 +123,26 @@ function drawTree(documentFile) {
         .attr('x', function(d) { return -getNodeWidth(d) / 2 })
         .attr('height', getNodeHeight)
         .attr('width', getNodeWidth)
-        .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+        .style("fill", function(d) {
+          return d._children ? "lightsteelblue" : "#fff";
+        });
 
     nodeEnter.append("foreignObject")
         .attr("width", getNodeWidth)
         .attr("height", getNodeHeight)
         .attr('class', 'nodeText')
         .attr('x', function(d) { return -getNodeWidth(d) / 2 })
+        .style("display", 'none')
       .append("xhtml:body")
       .append("xhtml:div")
-        .text(getNodeText)
+        .text(getNodeText);
 
     // Transition nodes to their new position.
     var nodeUpdate = node.transition()
         .duration(duration)
-        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+        .attr("transform", function(d) {
+          return "translate(" + d.x + "," + d.y + ")";
+        });
 
     nodeUpdate.select("rect")
         .attr('y', 0)
@@ -143,23 +155,16 @@ function drawTree(documentFile) {
 
     nodeUpdate.select("foreignObject")
         .attr('x', function(d) { return -getNodeWidth(d) / 2 })
+        .attr("width", getNodeWidth)
+        .attr("height", getNodeHeight)
         .text(getNodeText);
 
     // Transition exiting nodes to the parent's new position.
-    var nodeExit = node.exit().transition()
-        .duration(duration)
-        .attr("transform", function(d) { return "translate(" + source.x + "," + source.y + ")"; })
-        .remove();
+    var nodeExit = node.exit().remove();
 
-    nodeExit.select("rect")
-        .attr('y', -nodeHeight / 2)
-        .attr('height', getNodeHeight)
-        .attr('width', getNodeWidth);
-
-    // TODO make text disappear during the transition
-    // nodeExit.select("foreignObject")
-    //    .style("fill-opacity", 1e-6);
-
+    // Make text disappear during the transition
+    nodeUpdate.select("foreignObject")
+       .style("display", 'block')
 
     // Update the links…
     var link = svg.selectAll("path.link")
@@ -178,14 +183,8 @@ function drawTree(documentFile) {
         .duration(duration)
         .attr("d", diagonal);
 
-    // Transition exiting nodes to the parent's new position.
-    link.exit().transition()
-        .duration(duration)
-        .attr("d", function(d) {
-          var o = {x: source.x, y: source.y + getNodeHeight(d)};
-          return diagonal({source: o, target: o});
-        })
-        .remove();
+    // Removing exiting links
+    link.exit().remove();
 
     // Stash the old positions for transition.
     nodes.forEach(function(d) {
@@ -203,6 +202,7 @@ function drawTree(documentFile) {
       d.children = d._children;
       d._children = null;
     }
+    d.collapsed = !d.collapsed;
     update(d);
   }
 }
