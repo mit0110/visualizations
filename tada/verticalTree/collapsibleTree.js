@@ -11,7 +11,7 @@ var nodeHeight = 150, nodeWidth = 120, collapsedWidth = 40,
 
 var rootPosition = {x: margin.left + width / 2, y: margin.top};
 
-var maxTextLenght = 350;
+var maxTextLenght = 300;
 
 var i = 0,
     duration = 750,
@@ -193,6 +193,7 @@ function drawTree(documentFile) {
       d.y0 = d.y;
     });
   }
+
   // Toggle children on click.
   function click(d) {
     if (d.children) {
