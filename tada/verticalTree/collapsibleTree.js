@@ -17,6 +17,20 @@ var i = 0,
     duration = 750,
     root;
 
+// PALETTE https://coolors.co/247ba0-70c1b3-b2dbbf-f3ffbd-ff1654
+
+var colors = {
+  nodes: {
+    fillCollapsed: { //premise: sea foam green, claim: green shean,
+      // major-claim: lapis lazuli
+      premise: '#B2DBBF', claim: '#70C1B3', 'major-claim': '#5F9FB9', default: '#D5EBDC'
+    },
+    fillOpen: {
+      premise: '#D5EBDC', claim: '#B1DDD5', 'major-claim': '#9BC3D3', default: '#D5EBDC'
+    }
+  }
+}
+
 function getNodeWidth(d) {
   return d.collapsed ? collapsedWidth : nodeWidth;
 }
@@ -35,6 +49,13 @@ function getNodeText(d) {
   return d.name;
 }
 
+function getNodeFill(d) {
+  var colorScheme = d.collapsed ? colors.nodes.fillCollapsed : colors.nodes.fillOpen;
+  if (!d.label) {
+    return colorScheme.default;
+  }
+  return colorScheme[d.label];
+}
 
 function redraw(filename) {
   d3.select('#tree-container').html('');
@@ -123,9 +144,7 @@ function drawTree(documentFile) {
         .attr('x', function(d) { return -getNodeWidth(d) / 2 })
         .attr('height', getNodeHeight)
         .attr('width', getNodeWidth)
-        .style("fill", function(d) {
-          return d._children ? "lightsteelblue" : "#fff";
-        });
+        .style("fill", getNodeFill);
 
     nodeEnter.append("foreignObject")
         .attr("width", getNodeWidth)
@@ -149,9 +168,7 @@ function drawTree(documentFile) {
         .attr('x', function(d) { return -getNodeWidth(d) / 2 })
         .attr('height', getNodeHeight)
         .attr('width', getNodeWidth)
-        .style("fill", function(d) {
-          return d._children ? "lightsteelblue" : "#fff";
-        });
+        .style("fill", getNodeFill);
 
     nodeUpdate.select("foreignObject")
         .attr('x', function(d) { return -getNodeWidth(d) / 2 })
@@ -159,7 +176,7 @@ function drawTree(documentFile) {
         .attr("height", getNodeHeight)
         .text(getNodeText);
 
-    // Transition exiting nodes to the parent's new position.
+    // Removing exiting nodes
     var nodeExit = node.exit().remove();
 
     // Make text disappear during the transition
