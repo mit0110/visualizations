@@ -6,7 +6,7 @@ var margin = {top: 20, right: 120, bottom: 20, left: 120},
     width = viewerWidth - margin.right - margin.left,
     height = viewerHeight - margin.top - margin.bottom;
 
-var nodeHeight = 150, nodeWidth = 120, collapsedWidth = 40,
+var nodeHeight = 150, nodeWidth = 120, collapsedWidth = 60,
     collapsedHeight = 20;
 
 var rootPosition = {x: margin.left + width / 2, y: margin.top};
@@ -41,7 +41,7 @@ function getNodeHeight(d) {
 
 function getNodeText(d) {
   if (d.collapsed) {
-    return d.name;
+    return d.label || 'Case';
   }
   if (d.label && d.text) {
     return d.name + ' ' + d.label + ' ' + d.text.slice(0, maxTextLenght);
