@@ -18,12 +18,12 @@ TextChart = class TextChartClass {
    *   the paragraph number to introduce a break in the visualization.
    * @param {object} opts
    *   Settings for the graph. The available options are height, lineHeight,
-   *   linePadding, width.
+   *   linePadding, width, maxWords.
   */
   constructor(words, opts = {}) {
     // load in arguments from config object
     this.words = words;
-    this.wordsToDisplay = Math.min(100, this.words.length);
+    this.wordsToDisplay = Math.min(opts.maxWords || 500, this.words.length);
     this.width = opts.width || 960;
     this.height = opts.height || 500;
     this.lineHeight = opts.lineHeight || 30;
@@ -33,6 +33,7 @@ TextChart = class TextChartClass {
     this.wordSeparation = 2;
     this.fontType = 'sans-serif';
     this.paragraph = 0;
+    this.useColor = opts.useColor || false;
   }
 
   /**
@@ -80,9 +81,17 @@ TextChart = class TextChartClass {
         .attr('width', function(d) {
           return d.bb.width + _chart.wordHorizontalPadding; })
         .attr('height', function(d) {
-          return d.bb.height + _chart.wordVerticalPadding; })
-        .attr('opacity', function(d) { return opacityScale(d.attention); })
-        .attr('fill', '#00A1E4');
+          return d.bb.height + _chart.wordVerticalPadding; });
+
+    if (this.useColor) {
+      svg.selectAll('rect')
+          .attr('fill', function(d) {
+            return d3.interpolatePiYG(opacityScale(d.attention)); })
+    } else {  // Use opacity
+      svg.selectAll('rect')
+          .attr('opacity', function(d) { return opacityScale(d.attention); })
+          .attr('fill', '#00A1E4');
+    }
   }
 
   getYPosition() {
